@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <style type="text/css">
+        @import url("our/css/reset.css");
+        @import url("our/css/bootstrap.css");
+        @import url("our/css/_.css");
+
+        @import url("our/css/login.css");
+    </style>
+
+    <title>Login</title>
+</head>
+
+<body>
+
+<div id="page">
+<div class="center_vert">
+<div id="login-box">
+    <p class="sign-in">Sign in to continue to ...</p>
+    <form action="" method="post">
+        % if ($username_required) {
+        <div class="has-error">
+        <input type="text" name="username" placeholder="Username" class="form-control" value="">
+        </div>
+        % } else {
+            % if ($password_required) {
+            <input type="text" name="username" placeholder="Username" class="form-control" value="<%= $username %>">
+            % } else {
+            <input type="text" name="username" placeholder="Username" class="form-control" value="">
+            % }
+        % }
+
+        % if ($password_required) {
+        <div class="has-error">
+        <input type="password" name="password" placeholder="Password" class="form-control">
+        </div>
+        % } else {
+        <input type="password" name="password" placeholder="Password" class="form-control">
+        % }
+
+        % if ($error) {
+            <p class="text-incorrect"><%= $error %></p>
+        % }
+<!--
+        <p class="text-incorrect">
+            The username or password you entered is incorrect.
+        </p>
+-->
+        <input type="submit" id="login-button" class="btn btn-primary form-control" value="Sign in">
+    </form>
+</div>
+</div>
+</div>
+
+</body>
+</html>
+

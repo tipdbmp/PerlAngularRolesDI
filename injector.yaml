@@ -1,0 +1,16 @@
+dsn:
+    value: 'dbi:mysql:vlezin'
+
+user:
+    value: 'root'
+
+password:
+    value: 'table'
+
+'Service::DB':
+    class: 'Service::DB'
+    args:
+        dsn:      { $ref: dsn }
+        user:     { $ref: user }
+        password: { $ref: password }
+    lifecycle: singleton

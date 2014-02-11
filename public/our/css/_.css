@@ -1,0 +1,21 @@
+#result { display: inline-block; }
+body { margin: 10px; }
+
+.btn { border-radius: 0px; }
+
+.cursor:hover { cursor: pointer; }
+.inline-block { display: inline-block; }
+
+#the-todos td { padding: 5px; }
+
+.display-inline { display: inline; width: 90%; }
+
+.default-mode[disabled]
+{
+    background: white;
+    cursor: default;
+    border: 1px solid white;
+    box-shadow: none;
+}
+
+.checky { vertical-align: text-bottom; }
