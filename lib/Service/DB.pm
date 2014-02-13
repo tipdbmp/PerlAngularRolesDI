@@ -8,7 +8,7 @@ use Function::Parameters { func => 'function_strict', fn => 'method_strict' };
 
 has [qw|dsn user password|], is => 'ro', required => 1;
 
-has 'schema', is => 'ro', init_arg => undef, builder => '_schema_builder', lazy => 1;
+has 'schema', is => 'ro', init_arg => undef, lazy => 1, builder => '_schema_builder';
 fn _schema_builder()
 {
     return Service::DB::Schema->connect
@@ -20,6 +20,6 @@ fn _schema_builder()
         AutoCommit        => 1,
         mysql_enable_utf8 => 1,
     });
-}
+};
 
 1;

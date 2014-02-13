@@ -5,14 +5,10 @@ use v5.14;
 use Moo::Role;
 use Input::Validator;
 use Function::Parameters { func => 'function_strict', fn => 'method_strict' };
-with 'Injector';
 
-requires '_init_validator'; # '_resultset';
+requires '_init_validator', 'to_json'; # '_resultset';
 
-has 'db', is => 'ro', init_arg => undef, lazy => 1, default => fn()
-{
-    state $db = $self->injector->get('Service::DB');
-};
+has 'db', is => 'ro', required => 1;
 
 
 # This attribute is different (creates a new object) for each class

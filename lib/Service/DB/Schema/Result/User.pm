@@ -51,7 +51,13 @@ __PACKAGE__->table("user");
 
   data_type: 'varchar'
   is_nullable: 0
-  size: 80
+  size: 128
+
+=head2 salt
+
+  data_type: 'varchar'
+  is_nullable: 0
+  size: 128
 
 =cut
 
@@ -61,7 +67,9 @@ __PACKAGE__->add_columns(
   "username",
   { data_type => "varchar", is_nullable => 0, size => 32 },
   "password",
-  { data_type => "varchar", is_nullable => 0, size => 80 },
+  { data_type => "varchar", is_nullable => 0, size => 128 },
+  "salt",
+  { data_type => "varchar", is_nullable => 0, size => 128 },
 );
 
 =head1 PRIMARY KEY
@@ -77,8 +85,8 @@ __PACKAGE__->add_columns(
 __PACKAGE__->set_primary_key("id");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-02-10 01:18:28
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:5I7mtggDKNuXhkSd+jF9Ag
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-02-13 03:17:14
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:dO/xK2xUXtnQTgTnwYpOQw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

@@ -14,3 +14,16 @@ password:
         user:     { $ref: user }
         password: { $ref: password }
     lifecycle: singleton
+
+'Service::SaltedPasswordHashing':
+    class: 'Service::SaltedPasswordHashing'
+    # args:
+    lifecycle: singleton
+
+'Model::User':
+    class: 'Model::User'
+    args:
+        db:                 { $ref: 'Service::DB' }
+        salted_pwd_hashing: { $ref: 'Service::SaltedPasswordHashing' }
+        # username: ...
+

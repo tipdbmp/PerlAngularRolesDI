@@ -4,16 +4,21 @@ use warnings FATAL => 'all';
 use v5.14;
 use Function::Parameters { func => 'function_strict', fn => 'method_strict' };
 use Moo;
-with 'Service::DB::Role';
 
+with 'Service::DB::Role';
+with 'Service::SaltedPasswordHashing::Role';
 has 'username', is => 'ro', required => 1;
 
-has '_resultset', is => 'ro', init_arg => undef,
-handles => [qw|find|],
-default => fn()
+has '_resultset', is => 'ro', init_arg => undef, lazy => 1, default => fn()
 {
     state $resultset = $self->db->schema->resultset('User');
-};
+},
+handles => [qw|find|];
+
+fn to_json()
+{
+    return $self->find({ username => $self->username })->TO_JSON;
+}
 
 fn is_present()
 {

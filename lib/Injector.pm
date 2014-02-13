@@ -1,14 +1,29 @@
 package Injector;
+
+our ($VERSION, @ISA, @EXPORT, @EXPORT_OK);
+BEGIN
+{
+    require Exporter;
+    $VERSION   = 0.01;
+    @ISA       = qw|Exporter|;
+    @EXPORT    = qw||;
+    @EXPORT_OK = qw|injector|;
+}
+
 use strict;
 use warnings FATAL => 'all';
 use v5.14;
-use Moo::Role;
-# use Function::Parameters { func => 'function_strict', fn => 'method_strict' };
-use Beam::Wire;
 
-has 'injector', is => 'ro', init_arg => undef, lazy => 1, default => sub
+
+package _Injector;
+use Moo;
+with 'Injector::Role';
+
+package Injector;
+sub injector
 {
-    state $injector = Beam::Wire->new(file => 'injector.yaml');
-};
+    state $injector = _Injector->new->injector;
+}
+
 
 1;
